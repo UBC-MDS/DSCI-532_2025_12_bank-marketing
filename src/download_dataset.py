@@ -45,4 +45,5 @@ def export_raw_dataset():
 
     print(f"Dataset saved to '{file_path}'")
 
-export_raw_dataset()
+if __name__ == '__main__':
+    export_raw_dataset()
