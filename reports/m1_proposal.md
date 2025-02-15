@@ -4,9 +4,9 @@ Group Members: Hrayr Muradyan, Jia Quan Lim, Mason Zhang, Merari Santana
 
 ## I. Motivation and Purpose
 
-Our Role: Data scientist at a financial institution
+**Our Role:** Data scientist at a financial institution
 
-Target Audience: Marketing managers at a financial institution
+**Target Audience:** Marketing manager at a financial institution
 
 As data scientists at a financial institution, our goal is to support marketing managers and supervisors in refining their telemarketing strategies for term deposits. The bank's current marketing campaigns rely on phone calls, but not all outreach efforts result in successful conversions. The challenge lies in identifying which client characteristics most strongly influence a customer’s decision to subscribe to a term deposit, allowing for more effective targeting and campaign optimization.
 
@@ -46,29 +46,17 @@ We will focus on the following key variables, which we hypothesize will help ide
 
     -   `balance`: Client’s bank account balance
 
-    -   `default`: Whether the client has credit in default (*yes/no*)
-
     -   `housing`: Whether the client has a housing loan (*yes/no*)
 
     -   `loan`: Whether the client has a personal loan (*yes/no*)
 
 3.  **Marketing Campaign Information:**
 
-    -   `contact`: Type of communication used (*cellular, telephone, unknown*)
-
-    -   `month`: Last contact month
-
-    -   `day`: Last contact day
-
     -   `duration`: Last call duration (seconds)
 
     -   `campaign`: Number of contacts performed during this campaign
 
-    -   `pdays`: Days since the client was last contacted (if applicable)
-
     -   `previous`: Number of contacts performed before this campaign
-
-    -   `poutcome`: Outcome of the previous campaign (*success, failure, nonexistent*)
 
 4.  **Target Variable:**
 
@@ -80,9 +68,11 @@ To enhance the analysis, we plan to derive the following new variables:
 
 -   **Job Category (engineered from `job`)**: Reducing the original 12 job categories into 5 broader groups for easier visualization and interpretation.
 
--   **Age Groups (engineered from `age`)**: Grouping ages into categories (e.g., *18-25, 26-40, 41-60, 60+*) to understand how different age segments respond to marketing campaigns.
+-   **Whether the customer has a loan or not**: The original dataset contained `house loan` and `personal loan` features separately. We will combine them in a one variable `loan` indicating whether the customer has a loan or not.
 
--   **Year Grouping for filtering**: Grouping data into their corresponding year (e.g., "2008-2010"). This will allow marketing managers to analyze trends over different periods and assess the impact of campaigns across years.
+-   **Duration in minutes**: Duration will be converted to minutes. Allowing for better understanding of the last call duration.
+
+-   **Year Grouping for filtering**: Grouping data into their corresponding year (e.g., "2008-2010"). This will allow marketing managers to analyze trends over different periods and assess the impact of campaigns across years. Years will be extracted from the dataset.
 
 #### Justification for Dataset Choice
 
@@ -94,18 +84,20 @@ This dataset is well-suited for our project because it provides rich client-leve
 
 -   Refine **targeting strategies** to improve overall campaign efficiency and conversion rates.
 
-#### Reference:
-
-Moro, S., Laureano, R. M., & Cortez, P. (2014). UCI Bank Marketing Dataset [Data set]. UCI Machine Learning Repository. Retrieved from <https://archive.ics.uci.edu/dataset/222/bank+marketing>.
-
 ## III. Research questions and usage scenarios
 
 Celeste, a marketing manager at a prestigious bank in Portugal, wants to determine which factors influence a client's decision to accept a term deposit offer. By identifying key indicators, she aims to refine the bank’s telemarketing strategy and target high-potential customers effectively.
 
-When Celeste visits our “Bank Marketing Dashboard”, she will see an overview of her dataset and the 16 features related to client characteristics. She filters key variables such as “marital status”, "age", and "job type", to explore their impact on term deposit acceptance. For instance, she inspects the “loan” feature—whether the client has a personal loan or not—and notices a pattern: clients with personal loans are less likely to subscribe.
+When Celeste visits our “Bank Marketing Dashboard”, she will see an overview of her dataset and the features related to client characteristics. She filters key variables such as “marital status”, "age", and "job type", to explore their impact on term deposit acceptance. For instance, she inspects the “loan” feature—whether the client has a loan or not—and notices a pattern: clients with loans are less likely to subscribe.
 
 Using these insights, Celeste segments customers into high-, medium-, and low- potential groups and tailors telemarketing scripts accordingly. She then exports a refined list of high-potential clients to optimize her outreach strategy, increasing campaign efficiency and conversion rates.
 
 ## IV. App sketch & brief description
 
-...
+![](../img/sketch.png)
+
+The dashboard consists of a single main page divided into two primary columns. The first column involves the dashboard name and a set of filters (year, age, marital status, and so on) allowing users to target specific subsets of the data. There is a scroll bar that will be used to scroll over all available filters. The second column is organized into two main components represented as rows. First row contains summary statistics like proportion of the customers subscribed, average number of contacts during the campaign, etc. The top-right section includes a legend for the target variable, showing which colors correspond to which labels. The second row is a 2x2 grid of visualizations that are adjusted based on the filters provided. A scroll bar is also available to accommodate additional visualizations or features added in the future.
+
+#### Reference:
+
+Moro, S., Laureano, R. M., & Cortez, P. (2014). UCI Bank Marketing Dataset [Data set]. UCI Machine Learning Repository. Retrieved from <https://archive.ics.uci.edu/dataset/222/bank+marketing>.
