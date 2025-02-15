@@ -68,9 +68,9 @@ To enhance the analysis, we plan to derive the following new variables:
 
 -   **Job Category (engineered from `job`)**: Reducing the original 12 job categories into 5 broader groups for easier visualization and interpretation.
 
--  **Whether the customer has a loan or not**: The original dataset contained `house loan` and `personal loan` features separately. We will combine them in a one variable `loan` indicating whether the customer has a loan or not.
+-   **Whether the customer has a loan or not**: The original dataset contained `house loan` and `personal loan` features separately. We will combine them in a one variable `loan` indicating whether the customer has a loan or not.
 
--  **Duration in minutes**: Duration will be converted to minutes. Allowing for better understanding of the last call duration.
+-   **Duration in minutes**: Duration will be converted to minutes. Allowing for better understanding of the last call duration.
 
 -   **Year Grouping for filtering**: Grouping data into their corresponding year (e.g., "2008-2010"). This will allow marketing managers to analyze trends over different periods and assess the impact of campaigns across years. Years will be extracted from the dataset.
 
@@ -84,20 +84,19 @@ This dataset is well-suited for our project because it provides rich client-leve
 
 -   Refine **targeting strategies** to improve overall campaign efficiency and conversion rates.
 
-
 ## III. Research questions and usage scenarios
 
 Celeste, a marketing manager at a prestigious bank in Portugal, wants to determine which factors influence a client's decision to accept a term deposit offer. By identifying key indicators, she aims to refine the bank’s telemarketing strategy and target high-potential customers effectively.
 
-When Celeste visits our “Bank Marketing Dashboard”, she will see an overview of her dataset and the features related to client characteristics. She filters key variables such as “marital status”, "age", and "job type", to explore their impact on term deposit acceptance. For instance, she inspects the “loan” feature—whether the client has a loan or not—and notices a pattern: clients with personal loans are less likely to subscribe.
+When Celeste visits our “Bank Marketing Dashboard”, she will see an overview of her dataset and the features related to client characteristics. She filters key variables such as “marital status”, "age", and "job type", to explore their impact on term deposit acceptance. For instance, she inspects the “loan” feature—whether the client has a loan or not—and notices a pattern: clients with loans are less likely to subscribe.
 
 Using these insights, Celeste segments customers into high-, medium-, and low- potential groups and tailors telemarketing scripts accordingly. She then exports a refined list of high-potential clients to optimize her outreach strategy, increasing campaign efficiency and conversion rates.
 
 ## IV. App sketch & brief description
 
-The sketch can be found [here](../img/sketch.png).
+![](../img/sketch.png)
 
-The dashboard consists of a single main page divided into two primary columns. The first column involves the dashboard name and a set of filters (year, age, marital status, and so on) allowing users to target specific subsets of the data. There is a scroll bar that be used to scroll over all available filters. The second column is organized into two main components represented as rows. First row contains summary statistics like proportion of the customers subscribed, average number of contacts during the campaign, etc. The top-right section includes a legend for the target variable, showing which colors correspond to which labels. The second row is a 2x2 grid of visualizations that are adjusted based on the filters provided. A scroll bar is also available to accommodate additional visualizations or features added in the future.
+The dashboard consists of a single main page divided into two primary columns. The first column involves the dashboard name and a set of filters (year, age, marital status, and so on) allowing users to target specific subsets of the data. There is a scroll bar that will be used to scroll over all available filters. The second column is organized into two main components represented as rows. First row contains summary statistics like proportion of the customers subscribed, average number of contacts during the campaign, etc. The top-right section includes a legend for the target variable, showing which colors correspond to which labels. The second row is a 2x2 grid of visualizations that are adjusted based on the filters provided. A scroll bar is also available to accommodate additional visualizations or features added in the future.
 
 #### Reference:
 
