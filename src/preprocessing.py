@@ -2,6 +2,12 @@ import pandas as pd
 import os
 
 def main():
+    """
+    Preprocess the Bank Marketing dataset and saves it to a CSV file in the 'data/processed/' directory.
+
+    The function read in the raw dataset, carry out mapping to the job column and assign year to the corresponding
+    observation before saving it as a CSV file at the specified directory path 'data/processed/prep_bank_marketing.csv'.
+    """
     bank_prep = pd.read_csv("../data/raw/bank_marketing.csv")
 
     # Preprocessing for job categories
@@ -24,8 +30,6 @@ def main():
     bank_prep["job_prep"] = bank_prep["job"].replace(job_mapping).fillna("Unknown")
 
     # Preprocessing for years
-    # Define the order of months 
-    month_order = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
 
     # Initialize variables
     year = 2008 
