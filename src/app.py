@@ -2,11 +2,10 @@ from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
 import sys
 import os
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'src')))
-from components import cards, balance_plot, contact_plot, loan_plot
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 server = app.server
-from callbacks import *
+from src.components import cards, balance_plot, contact_plot, loan_plot
+from src.callbacks import *
 
 app.layout = html.Div([
     html.Div([
