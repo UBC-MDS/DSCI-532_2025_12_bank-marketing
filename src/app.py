@@ -1,6 +1,8 @@
 from dash import Dash, html, dcc
-
-app = Dash(__name__)
+import dash_bootstrap_components as dbc
+from components import cards
+app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+from callbacks import *
 
 app.layout = html.Div([
     html.Div([
@@ -11,11 +13,13 @@ app.layout = html.Div([
             html.Div([
                 html.P("Year", style={'textAlign': 'center', 'fontSize': '25px', 'color': 'black', 'marginTop': '5px'}),
                 dcc.Checklist(
+                    id="year_filter", # so callback function can detect changes
                     options=[
                         {'label': '2008', 'value': '2008'},
                         {'label': '2009', 'value': '2009'},
                         {'label': '2010', 'value': '2010'}
                     ],
+                    value=['2008', '2009', '2010'], # default selection
                     inline=True,  
                     labelStyle={
                         'backgroundColor': '#e08136', 
@@ -30,16 +34,23 @@ app.layout = html.Div([
             ], style={'backgroundColor': 'white', 'padding': '15px', 'borderRadius': '10px', 'boxShadow': '0 4px 8px rgba(0, 0, 0, 0.1)'}),
             html.Div([
                 html.P("Age", style={'textAlign': 'center', 'fontSize': '25px', 'color': 'black', 'marginTop': '5px'}),
-                dcc.RangeSlider(min=18, max=100, value=[25, 60], marks={18: '18', 100: '100'}),
+                dcc.RangeSlider(
+                    id="age_filter", # so callback function can access the selected age range
+                    min=18, max=100, step=1, value=[25, 60], 
+                    marks={i: str(i) for i in range(18, 101, 5)},
+                    tooltip={"placement": "bottom", "always_visible": True, "style": {"fontSize": "16px"}}
+                    ),
             ], style = {'backgroundColor': 'white', 'padding': '15px', 'borderRadius': '10px', 'boxShadow': '0 4px 8px rgba(0, 0, 0, 0.1)', 'marginTop': '20px'}),
             html.Div([
                 html.P("Marital Status", style={'textAlign': 'center', 'fontSize': '25px', 'color': 'black', 'marginTop': '5px', 'marginBottom': '5px'}),
                 dcc.Checklist(
+                    id="marital_filter", # so callback function can access changes
                     options=[
-                        {'label': 'Married', 'value': 'Married'},
-                        {'label': 'Divorced', 'value': 'Divorced'},
-                        {'label': 'Single', 'value': 'Single'}
+                        {'label': 'Married', 'value': 'married'},
+                        {'label': 'Divorced', 'value': 'divorced'},
+                        {'label': 'Single', 'value': 'single'}
                     ],
+                    value=['married', 'divorced', 'single'],  # Default selection
                     inline=True,  
                     labelStyle={
                         'backgroundColor': '#e08136', 
@@ -53,35 +64,34 @@ app.layout = html.Div([
                     }
                 )
             ], style={'backgroundColor': 'white', 'padding': '15px', 'borderRadius': '10px', 'boxShadow': '0 4px 8px rgba(0, 0, 0, 0.1)', 'marginTop': '20px'}),
-            html.P("Job Type ...", style={'textAlign': 'center'}),
+            html.Div([
+                html.P("Job Type", style={'textAlign': 'center', 'fontSize': '25px', 'color': 'black', 'marginTop': '5px'}),
+                dcc.Dropdown(
+                    id="job_filter",
+                    options=[
+                        {'label': "Employed", 'value': 'Employed'},
+                        {'label': "Retired", 'value': 'Retired'},
+                        {'label': "Student", 'value': 'Student'},
+                        {'label': "Unemployed", 'value': 'Unemployed'},
+                        {'label': "Unknown", 'value': 'Unknown'},
+                    ],
+                    value='Employed',
+                    clearable=False,
+                    style={
+                        'fontSize': '18px',
+                        'color': 'black',
+                        'backgroundColor': '#f8f9fa', 
+                    },
+                    className='dropdown-styling',
+                )
+            ], style={'backgroundColor': 'white', 'padding': '15px', 'borderRadius': '10px',
+                    'boxShadow': '0 4px 8px rgba(0, 0, 0, 0.1)', 'marginTop': '20px'})
         ], style={'color': 'white'})
     ], style={'width': '20%', 'backgroundColor': '#232242', 'padding': '20px', 'height': '100vh'}),
 
     html.Div([
         html.Div([
-            html.Div([
-                html.Div("Proportion Subscribed", style={'fontWeight': 'bold', 'textAlign': 'center', 'fontSize': '25px'}), html.H3("0.5", style={'textAlign': 'center', 'fontSize': '35px', 'marginTop': '10px', 'marginBottom': '10px'})
-            ], style={'backgroundColor': 'white', 'padding': '10px', 'margin': '5px', 'width': '15%'}),
-            html.Div([
-                html.Div("Average Number of Contacts during the Campaign", style={'fontWeight': 'bold', 'textAlign': 'center', 'fontSize': '20px'}), html.H3("2.75", style={'textAlign': 'center', 'fontSize': '35px', 'marginTop': '20px', 'marginBottom': '10px'})
-            ], style={'backgroundColor': 'white', 'padding': '10px', 'margin': '5px', 'width': '20%'}),
-            html.Div([
-                html.Div("Average Number of Contacts before the Campaign", style={'fontWeight': 'bold', 'textAlign': 'center', 'fontSize': '20px'}), html.H3("0.58", style={'textAlign': 'center', 'fontSize': '35px', 'marginTop': '20px', 'marginBottom': '10px'})
-            ], style={'backgroundColor': 'white', 'padding': '10px', 'margin': '5px', 'width': '20%'}),
-            html.Div([
-                html.Div("Average Last Contact Duration in minutes", style={'fontWeight': 'bold', 'textAlign': 'center', 'fontSize': '20px'}), html.H3("4.2", style={'textAlign': 'center', 'fontSize': '35px', 'marginTop': '20px', 'marginBottom': '10px'})
-            ], style={'backgroundColor': 'white', 'padding': '10px', 'margin': '5px', 'width': '20%'}),
-            html.Div([
-                html.P("Subscribed?", style={'textAlign': 'center', 'fontWeight': 'bold', 'fontSize': '25px', 'marginTop': '0px', 'marginBottom': '10px'}),
-                html.Div([
-                    html.Div(style={'width': '20px', 'height': '20px', 'backgroundColor': '#6dbb6f', 'display': 'inline-block', 'marginRight': '5px'}),
-                    html.Div("Yes", style={'display': 'inline-block', 'verticalAlign': 'middle', 'color': 'black', 'marginBottom': '8px'})
-                ], style={'margin': '5px'}),
-                html.Div([
-                    html.Div(style={'width': '20px', 'height': '20px', 'backgroundColor': '#ee7171', 'display': 'inline-block', 'marginRight': '5px'}),
-                    html.Div("No", style={'display': 'inline-block', 'verticalAlign': 'middle', 'color': 'black', 'marginBottom': '8px'})
-                ], style={'margin': '5px'})
-            ], style={'padding': '10px', 'margin': '5px', 'backgroundColor': 'white', 'width': '10%'})
+            cards
         ], style={'display': 'flex', 'justifyContent': 'space-between', 'marginBottom': '15px', 'height': '15%'}),
 
         html.Div([
@@ -107,7 +117,5 @@ app.layout = html.Div([
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-
-
 
 
