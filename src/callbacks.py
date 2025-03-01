@@ -1,6 +1,6 @@
 import pandas as pd
 from dash import Input, Output, html
-from src.app import app
+from src.app import dash_app
 import altair as alt
 alt.data_transformers.enable('default', max_rows=50000)
 
@@ -72,7 +72,7 @@ def return_empty(balance_plot_spec, contact_plot_spec):
         contact_plot_spec
     )
   
-@app.callback(
+@dash_app.callback(
     [Output("prop_subscribed", "children"),
      Output("avg_contacts_campaign", "children"),
      Output("avg_contacts_before", "children"),

@@ -1,13 +1,11 @@
 from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
-import sys
-import os
-app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
-server = app.server
+dash_app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+server = dash_app.server
 from src.components import cards, balance_plot, contact_plot, loan_plot
 from src.callbacks import *
 
-app.layout = html.Div([
+dash_app.layout = html.Div([
     html.Div([
         html.H2("Bank Marketing Analytics", style={'textAlign': 'center', 'color': 'white', 'fontWeight': 'bold', 'fontSize': '40px'}),
         html.Hr(style={'color': 'gray', 'borderWidth': '5px'}),
@@ -140,7 +138,7 @@ app.layout = html.Div([
 ], style={'display': 'flex'})
 
 if __name__ == '__main__':
-    app.run_server(debug=False)
+    dash_app.run_server(debug=False)
     
 
 
