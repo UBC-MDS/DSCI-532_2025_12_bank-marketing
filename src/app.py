@@ -119,7 +119,7 @@ dash_app.layout = html.Div([
         html.Div([
             html.Div([
                 html.Div("Education", style={'height': '15%', 'padding': '5px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '25px', 'fontWeight': 'bold'}),
-                html.Div(style={'height': '82%'})
+                html.Div([education_plot], style={'height': '82%'})
             ], style={'width': '45%', 'margin': '0.5%', 'flex-grow': 1}),
 
             html.Div([
