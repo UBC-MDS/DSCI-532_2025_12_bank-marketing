@@ -57,6 +57,24 @@ def create_loan_plot(data):
 
     return chart.to_dict()
 
+def create_education_plot(data):
+    chart = alt.Chart(data).mark_bar().encode(
+        alt.X('education:N', title='Education', axis=alt.Axis(labelAngle=360)),  
+        alt.Y('count()', title='Counts'),
+        alt.Color(
+            'y:N',
+            scale=alt.Scale(domain=['yes', 'no'], range=['green', '#d84e5f']),
+            title='Subscribed?', 
+            sort=['yes', 'no'], 
+            legend=alt.Legend(orient='right')),
+        alt.Tooltip(['count():Q'])
+        ).transform_filter(alt.datum.education != None).properties(
+            width=plot_width,  
+            height=plot_height
+            ).interactive()
+    
+    return chart.to_dict()
+
 def return_empty(balance_plot_spec, contact_plot_spec):
     subscribed_summary = [
                 html.P(f"Yes: 0"),
@@ -81,6 +99,7 @@ def return_empty(balance_plot_spec, contact_plot_spec):
      Output('balance_plot', 'spec'),
      Output('contact_plot', 'spec'),
      Output('loan_plot', 'spec'),
+     Output('education_plot', 'spec'),
     [Input("year_filter", "value"),
      Input("age_filter", "value"),
      Input("marital_filter", "value"),
@@ -104,6 +123,7 @@ def update_cards(selected_years, selected_age, selected_marital, selected_job):
     balance_plot = create_balance_plot(filtered_df)
     contact_plot = create_contact_plot(filtered_df)
     loan_plot = create_loan_plot(filtered_df)
+    education_plot = create_education_plot(filtered_df)
 
     if filtered_df.empty:
         return return_empty(balance_plot, contact_plot)
@@ -129,5 +149,6 @@ def update_cards(selected_years, selected_age, selected_marital, selected_job):
         subscribed_summary,
         balance_plot,
         contact_plot,
-        loan_plot
+        loan_plot,
+        education_plot
     )

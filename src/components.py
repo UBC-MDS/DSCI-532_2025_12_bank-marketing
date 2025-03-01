@@ -46,3 +46,6 @@ balance_plot = create_plot_card("balance_plot")
 contact_plot = create_plot_card("contact_plot")
 
 loan_plot = create_plot_card("loan_plot")
+
+education_plot = create_plot_card("education_plot")
+
