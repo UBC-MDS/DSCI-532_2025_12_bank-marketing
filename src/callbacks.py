@@ -57,7 +57,7 @@ def return_empty(balance_plot_spec, contact_plot_spec):
         balance_plot_spec,
         contact_plot_spec
     )
-
+  
 @app.callback(
     [Output("prop_subscribed", "children"),
      Output("avg_contacts_campaign", "children"),
@@ -71,7 +71,6 @@ def return_empty(balance_plot_spec, contact_plot_spec):
      Input("marital_filter", "value"),
      Input("job_filter", "value")],
 )
-
 
 
 def update_cards(selected_years, selected_age, selected_marital, selected_job):
@@ -97,7 +96,6 @@ def update_cards(selected_years, selected_age, selected_marital, selected_job):
     avg_contacts_campaign = filtered_df["campaign"].mean()
     avg_contacts_before = filtered_df["previous"].mean()
     avg_last_contact = filtered_df["duration"].mean()
-
 
     yes_count = sum(filtered_df['y_numeric'])
     no_count = len(filtered_df) - yes_count
