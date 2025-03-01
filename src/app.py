@@ -1,6 +1,6 @@
 from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
-from components import cards, balance_plot, contact_plot
+from components import cards, balance_plot, contact_plot, loan_plot
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 from callbacks import *
 
@@ -130,7 +130,7 @@ app.layout = html.Div([
 
             html.Div([
                 html.Div("Loan", style={'height': '15%', 'padding': '5px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '25px', 'fontWeight': 'bold'}),
-                html.Div(style={'height': '82%'})
+                html.Div([loan_plot], style={'height': '82%'})
             ], style={'width': '45%', 'margin': '0.5%', 'flex-grow': 1})
         ], style={'display': 'flex', 'flexWrap': 'wrap'})
     ], style={'width': '80%', 'backgroundColor': '#d3d3d3', 'padding': '20px', 'height': '100vh'})

@@ -44,3 +44,5 @@ cards = dbc.Row([
 balance_plot = create_plot_card("balance_plot")
 
 contact_plot = create_plot_card("contact_plot")
+
+loan_plot = create_plot_card("loan_plot")
