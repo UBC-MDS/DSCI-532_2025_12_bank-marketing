@@ -21,7 +21,7 @@ def create_balance_plot(data):
     ).mark_area(opacity=0.5).encode(
         x=alt.X('balance:Q', title='Balance', axis=alt.Axis(titleFontSize=16)),
         y=alt.Y('density:Q', title='Density', axis=alt.Axis(titleFontSize=16)),
-        color=alt.Color('y:N', scale=alt.Scale(domain=['yes', 'no'], range=['green', '#d84e5f']))
+        color=alt.Color('y:N', title='Subscribed?', scale=alt.Scale(domain=['yes', 'no'], range=['green', '#d84e5f']))
     ).properties(
         width=plot_width,  
         height=plot_height
@@ -33,9 +33,9 @@ def create_contact_plot(data):
     chart = alt.Chart(data, width='container').transform_density(
         'campaign', as_=['campaign', 'density'], groupby=['y']
     ).mark_area(opacity=0.5).encode(
-        x=alt.X('campaign:Q', title='Capaign', axis=alt.Axis(titleFontSize=16)),
+        x=alt.X('campaign:Q', title='Campaign', axis=alt.Axis(titleFontSize=16)),
         y=alt.Y('density:Q', title='Density', axis=alt.Axis(titleFontSize=16)),
-        color=alt.Color('y:N', scale=alt.Scale(domain=['yes', 'no'], range=['green', '#d84e5f']))
+        color=alt.Color('y:N', title='Subscribed?', scale=alt.Scale(domain=['yes', 'no'], range=['green', '#d84e5f']))
     ).properties(
         width=plot_width,  
         height=plot_height
@@ -44,10 +44,10 @@ def create_contact_plot(data):
     return chart.to_dict()
 
 def create_loan_plot(data):
-    chart = alt.Chart(data).mark_bar(size=18).encode(
-        alt.X('loan:N', title='Has Personal Loan?', axis=alt.Axis(labelAngle=360)),
-        alt.Y('count()', title='Counts'),
-        alt.Color('y:N', title='Subscribed?'),
+    chart = alt.Chart(data, width='container').mark_bar(size=60).encode(
+        alt.X('loan:N', title='Has Personal Loan?', axis=alt.Axis(labelAngle=360, titleFontSize=16)),
+        alt.Y('count()', title='Counts', axis=alt.Axis(titleFontSize=16)),
+        alt.Color('y:N', title='Subscribed?', scale=alt.Scale(domain=['yes', 'no'], range=['green', '#d84e5f'])),
         alt.XOffset('y:N'),
         alt.Tooltip(['count():Q'])
     ).properties(
@@ -58,9 +58,9 @@ def create_loan_plot(data):
     return chart.to_dict()
 
 def create_education_plot(data):
-    chart = alt.Chart(data).mark_bar().encode(
-        alt.X('education:N', title='Education', axis=alt.Axis(labelAngle=360)),  
-        alt.Y('count()', title='Counts'),
+    chart = alt.Chart(data, width='container').mark_bar().encode(
+        alt.X('education:N', title='Education', axis=alt.Axis(labelAngle=360, titleFontSize=16)),  
+        alt.Y('count()', title='Counts', axis=alt.Axis(titleFontSize=16)),
         alt.Color(
             'y:N',
             scale=alt.Scale(domain=['yes', 'no'], range=['green', '#d84e5f']),
