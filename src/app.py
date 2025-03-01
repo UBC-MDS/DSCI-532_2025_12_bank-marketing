@@ -1,69 +1,81 @@
 from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
-from components import cards
+from components import cards, balance_plot, contact_plot
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 from callbacks import *
 
 app.layout = html.Div([
     html.Div([
-        html.H2("Bank Marketing Analytics", style={'textAlign': 'center', 'color': 'white', 'fontWeight': 'bold', 'fontSize': '50px'}),
+        html.H2("Bank Marketing Analytics", style={'textAlign': 'center', 'color': 'white', 'fontWeight': 'bold', 'fontSize': '40px'}),
         html.Hr(style={'color': 'gray', 'borderWidth': '5px'}),
         html.Div([
-            html.H4("Filters", style={'textAlign': 'center', 'fontSize': '35px', 'marginTop': '20px'}),
+            html.H4("Filters", style={'textAlign': 'center', 'fontSize': '30px', 'marginTop': '20px'}),
             html.Div([
                 html.P("Year", style={'textAlign': 'center', 'fontSize': '25px', 'color': 'black', 'marginTop': '5px'}),
                 dcc.Checklist(
-                    id="year_filter", # so callback function can detect changes
+                    id="year_filter", 
                     options=[
                         {'label': '2008', 'value': '2008'},
                         {'label': '2009', 'value': '2009'},
                         {'label': '2010', 'value': '2010'}
                     ],
-                    value=['2008', '2009', '2010'], # default selection
+                    value=['2008', '2009', '2010'], 
                     inline=True,  
                     labelStyle={
-                        'backgroundColor': '#e08136', 
+                        'backgroundColor': '#e08136',
                         'color': 'black',
-                        'padding': '10px 15px', 
-                        'marginRight': '11px',
-                        'marginLeft': '11px', 
+                        'padding': '10px 15px',
                         'borderRadius': '5px',
-                        'fontSize': '18px'
+                        'fontSize': '0.8vw', 
+                        'display': 'inline-flex', 
+                        'alignItems': 'center', 
+                        'flexGrow': 1, 
+                        'margin': '0 3px', 
+                    },
+                    style={
+                        'display': 'flex',  
+                        'justifyContent': 'space-evenly',  
+                        'width': '100%', 
                     }
                 )
             ], style={'backgroundColor': 'white', 'padding': '15px', 'borderRadius': '10px', 'boxShadow': '0 4px 8px rgba(0, 0, 0, 0.1)'}),
             html.Div([
                 html.P("Age", style={'textAlign': 'center', 'fontSize': '25px', 'color': 'black', 'marginTop': '5px'}),
                 dcc.RangeSlider(
-                    id="age_filter", # so callback function can access the selected age range
+                    id="age_filter", 
                     min=18, max=100, step=1, value=[25, 60], 
-                    marks={i: str(i) for i in range(18, 101, 5)},
+                    marks={i: str(i) for i in range(15, 106, 10)},
                     tooltip={"placement": "bottom", "always_visible": True, "style": {"fontSize": "16px"}}
                     ),
             ], style = {'backgroundColor': 'white', 'padding': '15px', 'borderRadius': '10px', 'boxShadow': '0 4px 8px rgba(0, 0, 0, 0.1)', 'marginTop': '20px'}),
             html.Div([
                 html.P("Marital Status", style={'textAlign': 'center', 'fontSize': '25px', 'color': 'black', 'marginTop': '5px', 'marginBottom': '5px'}),
                 dcc.Checklist(
-                    id="marital_filter", # so callback function can access changes
+                    id="marital_filter", 
                     options=[
                         {'label': 'Married', 'value': 'married'},
                         {'label': 'Divorced', 'value': 'divorced'},
                         {'label': 'Single', 'value': 'single'}
                     ],
-                    value=['married', 'divorced', 'single'],  # Default selection
+                    value=['married', 'divorced', 'single'], 
                     inline=True,  
                     labelStyle={
-                        'backgroundColor': '#e08136', 
+                        'backgroundColor': '#e08136',
                         'color': 'black',
-                        'padding': '10px 15px', 
-                        'marginRight': '20px',
-                        'marginLeft': '20px',
-                        'marginTop': '10px', 
+                        'padding': '8px 12px',
                         'borderRadius': '5px',
-                        'fontSize': '18px'
+                        'fontSize': '0.8vw', 
+                        'display': 'inline-flex',  
+                        'alignItems': 'center',  
+                        'flexGrow': 1,  
+                        'margin': '0 3px',  
+                    },
+                    style={
+                        'display': 'flex',  
+                        'justifyContent': 'space-evenly',  
+                        'width': '100%', 
                     }
-                )
-            ], style={'backgroundColor': 'white', 'padding': '15px', 'borderRadius': '10px', 'boxShadow': '0 4px 8px rgba(0, 0, 0, 0.1)', 'marginTop': '20px'}),
+            )], style={'backgroundColor': 'white', 'padding': '15px', 'borderRadius': '10px', 'boxShadow': '0 4px 8px rgba(0, 0, 0, 0.1)', 'marginTop': '20px'}),
             html.Div([
                 html.P("Job Type", style={'textAlign': 'center', 'fontSize': '25px', 'color': 'black', 'marginTop': '5px'}),
                 dcc.Dropdown(
@@ -92,26 +104,35 @@ app.layout = html.Div([
     html.Div([
         html.Div([
             cards
-        ], style={'display': 'flex', 'justifyContent': 'space-between', 'marginBottom': '15px', 'height': '15%'}),
+        ], style={
+            'display': 'flex', 
+            'flexWrap': 'wrap', 
+            'justifyContent': 'space-between',  
+            'boxSizing': 'border-box',  
+            'height': '16%',
+        }),
 
         html.Div([
             html.Div([
-                html.Div("Education", style={'height': '15%', 'padding': '10px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '30px', 'fontWeight': 'bold'}),
-                html.Div(style={'height': '85%', 'backgroundColor': 'white'})
-            ], style={'width': '45%', 'margin': '1%'}),
+                html.Div("Education", style={'height': '15%', 'padding': '5px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '25px', 'fontWeight': 'bold'}),
+                html.Div(style={'height': '82%'})
+            ], style={'width': '45%', 'margin': '0.5%', 'flex-grow': 1}),
+
             html.Div([
-                html.Div("Number of Contacts", style={'height': '15%', 'padding': '10px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '30px', 'fontWeight': 'bold'}),
-                html.Div(style={'height': '85%', 'backgroundColor': 'white'})
-            ], style={'width': '45%', 'margin': '1%'}),
+                html.Div("Number of Contacts", style={'height': '15%', 'padding': '5px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '25px', 'fontWeight': 'bold'}),
+                html.Div([balance_plot], style={'height': '82%'})
+            ], style={'width': '45%', 'margin': '0.5%', 'flex-grow': 1}),
+
             html.Div([
-                html.Div("Balance", style={'height': '15%', 'padding': '10px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '30px', 'fontWeight': 'bold'}),
-                html.Div(style={'height': '85%', 'backgroundColor': 'white'})
-            ], style={'width': '45%', 'margin': '1%', 'marginTop':'30px'}),
+                html.Div("Balance", style={'height': '15%', 'padding': '5px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '25px', 'fontWeight': 'bold'}),
+                html.Div([contact_plot], style={'height': '82%'})
+            ], style={'width': '45%', 'margin': '0.5%', 'flex-grow': 1}),
+
             html.Div([
-                html.Div("Loan", style={'height': '15%', 'padding': '10px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '30px', 'fontWeight': 'bold'}),
-                html.Div(style={'height': '85%', 'backgroundColor': 'white'})
-            ], style={'width': '45%', 'margin': '1%', 'marginTop':'30px'})
-        ], style={'display': 'flex', 'flexWrap': 'wrap', 'height': '700px'})
+                html.Div("Loan", style={'height': '15%', 'padding': '5px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '25px', 'fontWeight': 'bold'}),
+                html.Div(style={'height': '82%'})
+            ], style={'width': '45%', 'margin': '0.5%', 'flex-grow': 1})
+        ], style={'display': 'flex', 'flexWrap': 'wrap'})
     ], style={'width': '80%', 'backgroundColor': '#d3d3d3', 'padding': '20px', 'height': '100vh'})
 ], style={'display': 'flex'})
 
