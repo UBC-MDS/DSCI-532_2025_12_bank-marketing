@@ -1,0 +1,15 @@
+altair==5.5.0
+dash==2.18.2
+dash-bootstrap-components==1.7.1
+dash-core-components==2.0.0
+dash-html-components==2.0.0
+dash-table==5.0.0
+dash-vega-components==0.11.0
+ipykernel==6.29.5
+ipython==8.32.0
+notebook==7.3.2
+numpy==2.2.3
+pandas==2.2.3
+pip==25.0
+gunicorn==23.*
+ucimlrepo==0.0.7
