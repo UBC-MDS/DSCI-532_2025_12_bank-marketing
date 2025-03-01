@@ -18,10 +18,10 @@ plot_height = 190
 def create_balance_plot(data):
     chart = alt.Chart(data, width='container').transform_density(
         'balance', as_=['balance', 'density'], groupby=['y']
-    ).mark_area(opacity=0.5).encode(
+    ).mark_area(opacity=0.75).encode(
         x=alt.X('balance:Q', title='Balance', axis=alt.Axis(titleFontSize=16)),
         y=alt.Y('density:Q', title='Density', axis=alt.Axis(titleFontSize=16)),
-        color=alt.Color('y:N', scale=alt.Scale(domain=['yes', 'no'], range=['green', '#d84e5f']))
+        color=alt.Color('y:N', scale=alt.Scale(domain=['yes', 'no'], range=['#60ac5a', '#d16f6f']), title='Subscribed?')
     ).properties(
         width=plot_width,  
         height=plot_height
@@ -30,24 +30,24 @@ def create_balance_plot(data):
     return chart.to_dict()
 
 def create_contact_plot(data):
-    chart = alt.Chart(data, width='container').transform_density(
-        'campaign', as_=['campaign', 'density'], groupby=['y']
-    ).mark_area(opacity=0.5).encode(
-        x=alt.X('campaign:Q', title='Capaign', axis=alt.Axis(titleFontSize=16)),
-        y=alt.Y('density:Q', title='Density', axis=alt.Axis(titleFontSize=16)),
-        color=alt.Color('y:N', scale=alt.Scale(domain=['yes', 'no'], range=['green', '#d84e5f']))
+    chart = alt.Chart(data).mark_square().encode(
+         x=alt.X('campaign:Q', title='Number of Contacts During this Campaign', axis=alt.Axis(titleFontSize=16)),
+         y=alt.Y('y:N', title='Subscribed?', axis=alt.Axis(titleFontSize=16)),
+         color=alt.Color('y:N', scale=alt.Scale(domain=['yes', 'no'], range=['#60ac5a', '#d16f6f']), title='Subscribed?'),
+         size='count()',
+         tooltip=['campaign:Q', 'y:N', 'count():Q']
     ).properties(
-        width=plot_width,  
+        width=plot_width,
         height=plot_height
     ).interactive()
 
     return chart.to_dict()
 
 def create_loan_plot(data):
-    chart = alt.Chart(data).mark_bar(size=18).encode(
-        alt.X('loan:N', title='Has Personal Loan?', axis=alt.Axis(labelAngle=360)),
-        alt.Y('count()', title='Counts'),
-        alt.Color('y:N', title='Subscribed?'),
+    chart = alt.Chart(data).mark_bar(size=40).encode(
+        alt.X('loan:N', title='Has Personal Loan?', axis=alt.Axis(labelAngle=360, titleFontSize=16)),
+        alt.Y('count()', title='Counts', axis=alt.Axis(titleFontSize=16)),
+        alt.Color('y:N', scale=alt.Scale(domain=['yes', 'no'], range=['#60ac5a', '#d16f6f']), title='Subscribed?'),
         alt.XOffset('y:N'),
         alt.Tooltip(['count():Q'])
     ).properties(
@@ -58,27 +58,31 @@ def create_loan_plot(data):
     return chart.to_dict()
 
 def create_education_plot(data):
-    chart = alt.Chart(data).mark_bar().encode(
-        alt.X('education:N', title='Education', axis=alt.Axis(labelAngle=360)),  
-        alt.Y('count()', title='Counts'),
+    data_aggregated = data.groupby(['education', 'y']).size().reset_index(name='count')
+    data_aggregated['total'] = data_aggregated.groupby('education')['count'].transform('sum')
+    data_aggregated['proportion'] = data_aggregated['count'] / data_aggregated['total']
+    
+    chart = alt.Chart(data_aggregated).mark_bar().encode(
+        alt.X('education:N', title='Education', axis=alt.Axis(labelAngle=360, titleFontSize=16)),  
+        alt.Y('proportion:Q', title='Proportion', stack='zero', axis=alt.Axis(titleFontSize=16)),
         alt.Color(
             'y:N',
-            scale=alt.Scale(domain=['yes', 'no'], range=['green', '#d84e5f']),
+            scale=alt.Scale(domain=['yes', 'no'], range=['#60ac5a', '#d16f6f']),
             title='Subscribed?', 
             sort=['yes', 'no'], 
             legend=alt.Legend(orient='right')),
-        alt.Tooltip(['count():Q'])
-        ).transform_filter(alt.datum.education != None).properties(
+        alt.Tooltip(['proportion:Q'])
+        ).properties(
             width=plot_width,  
             height=plot_height
             ).interactive()
     
     return chart.to_dict()
 
-def return_empty(balance_plot_spec, contact_plot_spec):
+def return_empty(balance_plot, contact_plot, loan_plot, education_plot):
     subscribed_summary = [
-                html.P(f"Yes: 0"),
-                html.P(f"No: 0")
+                html.P(f"Yes: {0}", style={'margin': '0px'}),
+                html.P(f"No: {0}", style={'margin': '0px'})
             ]
     return (
         0,
@@ -86,8 +90,10 @@ def return_empty(balance_plot_spec, contact_plot_spec):
         0,
         0,
         subscribed_summary,
-        balance_plot_spec,
-        contact_plot_spec
+        balance_plot,
+        contact_plot,
+        loan_plot,
+        education_plot
     )
   
 @dash_app.callback(
@@ -108,9 +114,6 @@ def return_empty(balance_plot_spec, contact_plot_spec):
 
 
 def update_cards(selected_years, selected_age, selected_marital, selected_job):
-    # if not selected_years or not selected_marital or selected_job is None:
-    #     return return_empty()
-
     min_age, max_age = selected_age
 
     filtered_df = df[
@@ -126,7 +129,7 @@ def update_cards(selected_years, selected_age, selected_marital, selected_job):
     education_plot = create_education_plot(filtered_df)
 
     if filtered_df.empty:
-        return return_empty(balance_plot, contact_plot)
+        return return_empty(balance_plot, contact_plot, loan_plot, education_plot)
 
     prop_subscribed = filtered_df["y_numeric"].mean()
     avg_contacts_campaign = filtered_df["campaign"].mean()
