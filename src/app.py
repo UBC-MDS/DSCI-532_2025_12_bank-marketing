@@ -2,6 +2,7 @@ from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
 from components import cards, balance_plot, contact_plot, loan_plot
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+server = app.server
 from callbacks import *
 
 app.layout = html.Div([
@@ -138,5 +139,6 @@ app.layout = html.Div([
 
 if __name__ == '__main__':
     app.run_server(debug=False)
+    
 
 
