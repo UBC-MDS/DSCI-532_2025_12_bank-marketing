@@ -10,7 +10,7 @@ from src.callbacks import *
 
 dash_app.layout = html.Div([
     html.Div([
-        html.H2("Bank Marketing Analytics", style={'textAlign': 'center', 'color': 'white', 'fontWeight': 'bold', 'fontSize': '40px'}),
+        html.H2("Bank Marketing Analytics", style={'textAlign': 'center', 'color': 'white', 'fontWeight': 'bold', 'fontSize': '35px'}),
         html.Hr(style={'color': 'gray', 'borderWidth': '5px'}),
         html.Div([
             html.H4("Filters", style={'textAlign': 'center', 'fontSize': '30px', 'marginTop': '20px'}),
@@ -118,22 +118,22 @@ dash_app.layout = html.Div([
 
         html.Div([
             html.Div([
-                html.Div("Education", style={'height': '15%', 'padding': '5px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '25px', 'fontWeight': 'bold'}),
+                html.Div("Proportion of Subscribed Users by Education Level", style={'height': '15%', 'padding': '5px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '20px', 'fontWeight': 'bold'}),
                 html.Div([education_plot], style={'height': '82%'})
             ], style={'width': '45%', 'margin': '0.5%', 'flex-grow': 1}),
 
             html.Div([
-                html.Div("Number of Contacts", style={'height': '15%', 'padding': '5px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '25px', 'fontWeight': 'bold'}),
+                html.Div("Balance Distribution by Subscription Status", style={'height': '15%', 'padding': '5px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '20px', 'fontWeight': 'bold'}),
                 html.Div([balance_plot], style={'height': '82%'})
             ], style={'width': '45%', 'margin': '0.5%', 'flex-grow': 1}),
 
             html.Div([
-                html.Div("Balance", style={'height': '15%', 'padding': '5px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '25px', 'fontWeight': 'bold'}),
+                html.Div("Campaign Contact and Subscription Status", style={'height': '15%', 'padding': '5px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '20px', 'fontWeight': 'bold'}),
                 html.Div([contact_plot], style={'height': '82%'})
             ], style={'width': '45%', 'margin': '0.5%', 'flex-grow': 1}),
 
             html.Div([
-                html.Div("Loan", style={'height': '15%', 'padding': '5px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '25px', 'fontWeight': 'bold'}),
+                html.Div("Distribution of Personal Loan by Subscription Status", style={'height': '15%', 'padding': '5px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '20px', 'fontWeight': 'bold'}),
                 html.Div([loan_plot], style={'height': '82%'})
             ], style={'width': '45%', 'margin': '0.5%', 'flex-grow': 1})
         ], style={'display': 'flex', 'flexWrap': 'wrap'})

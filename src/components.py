@@ -35,9 +35,9 @@ def create_plot_card(plot_id):
 # Define all the required cards
 cards = dbc.Row([
     dbc.Col(create_stat_card("Proportion Subscribed", "prop_subscribed"), style={'height': '100%'}),
-    dbc.Col(create_stat_card("Avg Contacts (Campaign)", "avg_contacts_campaign"), style={'height': '100%'}),
-    dbc.Col(create_stat_card("Avg Contacts (Before)", "avg_contacts_before"), style={'height': '100%'}),
-    dbc.Col(create_stat_card("Avg Last Contact Duration", "avg_last_contact"), style={'height': '100%'}),
+    dbc.Col(create_stat_card("Average Contacts (Current Campaign)", "avg_contacts_campaign"), style={'height': '100%'}),
+    dbc.Col(create_stat_card("Average Contacts (Previous Campaigns)", "avg_contacts_before"), style={'height': '100%'}),
+    dbc.Col(create_stat_card("Average Last Contact Duration (Seconds)", "avg_last_contact"), style={'height': '100%'}),
     dbc.Col(create_stat_card("Subscribed?", "subscribed_summary"), style={'height': '100%'}),
 ], style={'height': '95%'})
 
