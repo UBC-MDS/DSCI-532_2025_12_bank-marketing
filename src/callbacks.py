@@ -1,6 +1,6 @@
 import pandas as pd
 from dash import Input, Output, html
-from app import app
+from src.app import app
 import altair as alt
 alt.data_transformers.enable('default', max_rows=50000)
 
