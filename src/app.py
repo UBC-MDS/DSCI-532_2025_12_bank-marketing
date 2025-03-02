@@ -153,7 +153,7 @@ dash_app.layout = html.Div([
 ], style={'display': 'flex'})
 
 if __name__ == '__main__':
-    dash_app.run_server(debug=True)
+    dash_app.run_server(debug=False)
     
 
 
