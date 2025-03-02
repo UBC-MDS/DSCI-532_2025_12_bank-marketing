@@ -10,9 +10,12 @@ The dashboard will provide **interactive visualizations** that enable marketing 
 
 ## 🎬 Demo
 
+Give the demo **a try yourself** by clicking [this link](https://dsci-532-2025-12-bank-marketing.onrender.com)!
+
 Please take a look at the **GIF below** for a quick demo of our dashboard!
 
 ![](img/bank_marketing.gif)
+
 
 ## 🛠️ Support
 

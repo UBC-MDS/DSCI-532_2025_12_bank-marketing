@@ -6,12 +6,6 @@ alt.data_transformers.enable('default', max_rows=50000)
 
 df = pd.read_csv("data/processed/prep_bank_marketing.csv")
 
-# Convert 'y' column to numeric values
-df['y_numeric'] = df['y'].map({'yes': 1, 'no': 0})
-
-# Standardize job categories
-df['job_prep'] = df['job_prep'].str.lower().str.strip()
-
 plot_width = 380
 plot_height = 190
 
