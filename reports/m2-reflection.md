@@ -16,7 +16,7 @@ We have successfully implemented most of the core functionality outlined in our 
     -   Total count of subscribed and non-subscribed customers
 -   **Visualizations**:
     -   Education vs. Subscription Rate (Stacked Bar Chart)
-    -   Number of Contacts vs. Subscription Rate (Density Plot)
+    -   Number of Contacts vs. Subscription Rate (Square plot)
     -   Balance vs. Subscription Rate (Density Plot)
     -   Loan Status vs. Subscription Rate (Grouped Bar Chart)
 -   **App Layout & Styling**:
@@ -61,6 +61,13 @@ Overall, we have stayed very close to our original proposal. However, some devia
 -   Export Functionality: Generate CSVs of high-potential clients based on filtering criteria.
 
 ------------------------------------------------------------------------
+
+### Challenging Portion
+
+-   As mentioned above, we managed to develop almost everything we had in our sketch.
+-   If you now look at the sketch and the app, they are almost identical!
+-   We have in total 4 plots, 4 filters, 5 summary statistics cards. 
+
 
 ## **Final Thoughts**
 
