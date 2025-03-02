@@ -46,6 +46,12 @@ def main():
     # Assign computed years to DataFrame
     bank_prep["year"] = years
 
+    # Convert 'y' column to numeric values
+    bank_prep['y_numeric'] = bank_prep['y'].map({'yes': 1, 'no': 0})
+
+    # Standardize job categories
+    bank_prep['job_prep'] = bank_prep['job_prep'].str.lower().str.strip()
+
     directory = os.path.join(os.path.dirname(os.getcwd()), 'data/processed')
     
     # Ensure the directory exists
