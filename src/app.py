@@ -107,6 +107,11 @@ dash_app.layout = html.Div([
                 html.Div([
                     html.P("Our Bank Marketing Dashboard helps financial institutions optimize their telemarketing strategies for term deposit subscriptions. By analyzing client demographics, financial status, and previous marketing interactions, we seek to identify key factors influencing customer decisions.",
                            style={'textAlign': 'center', 'fontSize': '20px', 'color': 'black', 'marginTop': '10px', 'marginBottom': '10px'}),
+                    html.P("Repository Link:",
+                           style={'textAlign': 'center', 'fontSize': '20px', 'color': 'black', 'marginTop': '10px', 'marginBottom': '10px'}),
+                    html.A("https://github.com/UBC-MDS/DSCI-532_2025_12_bank-marketing", 
+                           href="https://github.com/UBC-MDS/DSCI-532_2025_12_bank-marketing",
+                           style={'textAlign': 'center', 'fontSize': '15px', 'color': 'black', 'marginTop': '10px', 'marginBottom': '10px'}),
                     html.P("Copyright (c) 2025 Hrayr Muradyan, Merari Santana-Carbajal, Joseph Lim, Mason Zhang",
                            style={'textAlign': 'center', 'fontSize': '18px', 'color': 'black', 'marginTop': '10px', 'marginBottom': '10px'}),
                     html.P("The latest deployment date is 01/03/2025",
@@ -153,7 +158,7 @@ dash_app.layout = html.Div([
 ], style={'display': 'flex'})
 
 if __name__ == '__main__':
-    dash_app.run_server(debug=False)
+    dash_app.run_server(debug=True)
     
 
 
