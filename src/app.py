@@ -101,9 +101,21 @@ dash_app.layout = html.Div([
                     className='dropdown-styling',
                 )
             ], style={'backgroundColor': 'white', 'padding': '15px', 'borderRadius': '10px',
-                    'boxShadow': '0 4px 8px rgba(0, 0, 0, 0.1)', 'marginTop': '20px'})
+                    'boxShadow': '0 4px 8px rgba(0, 0, 0, 0.1)', 'marginTop': '20px'}),
+            html.Div([
+                html.H4("Info", style={'textAlign': 'center', 'fontSize': '30px', 'marginTop': '20px', 'color': 'black'}),
+                html.Div([
+                    html.P("Our Bank Marketing Dashboard helps financial institutions optimize their telemarketing strategies for term deposit subscriptions. By analyzing client demographics, financial status, and previous marketing interactions, we seek to identify key factors influencing customer decisions.",
+                           style={'textAlign': 'center', 'fontSize': '20px', 'color': 'black', 'marginTop': '10px', 'marginBottom': '10px'}),
+                    html.P("Copyright (c) 2025 Hrayr Muradyan, Merari Santana-Carbajal, Joseph Lim, Mason Zhang",
+                           style={'textAlign': 'center', 'fontSize': '18px', 'color': 'black', 'marginTop': '10px', 'marginBottom': '10px'}),
+                    html.P("The latest deployment date is 01/03/2025",
+                           style={'textAlign': 'center', 'fontSize': '18px', 'color': 'black', 'marginTop': '10px', 'marginBottom': '10px'})
+                ], style={'backgroundColor': 'white', 'padding': '15px', 'borderRadius': '10px', 'boxShadow': '0 4px 8px rgba(0, 0, 0, 0.1)', 'marginTop': '20px'})
+            ], style={'backgroundColor': 'white', 'padding': '15px', 'borderRadius': '10px', 'boxShadow': '0 4px 8px rgba(0, 0, 0, 0.1)', 'marginTop': '20px'}),
         ], style={'color': 'white'})
-    ], style={'width': '20%', 'backgroundColor': '#232242', 'padding': '20px', 'height': '100vh'}),
+    ], style={'width': '20%', 'backgroundColor': '#232242', 'padding': '20px', 'height': '100vh',  
+    'overflow-y': 'auto'}),
 
     html.Div([
         html.Div([
@@ -137,7 +149,7 @@ dash_app.layout = html.Div([
                 html.Div([loan_plot], style={'height': '82%'})
             ], style={'width': '45%', 'margin': '0.5%', 'flex-grow': 1})
         ], style={'display': 'flex', 'flexWrap': 'wrap'})
-    ], style={'width': '80%', 'backgroundColor': '#d3d3d3', 'padding': '20px', 'height': '100vh'})
+    ], style={'width': '80%', 'backgroundColor': '#d3d3d3', 'padding': '20px', 'height': '100vh', 'position': 'fixed', 'right': 0, 'top': 0})
 ], style={'display': 'flex'})
 
 if __name__ == '__main__':
