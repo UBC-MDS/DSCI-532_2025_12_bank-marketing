@@ -1,5 +1,7 @@
 # 📊 Bank Marketing Dashboard
 
+**Authors: Hrayr Muradyan, Joseph Lim, Merari Santana–Carbajal, Mason Zhang**
+
 ## Welcome!
 
 Our **Bank Marketing Dashboard** helps financial institutions optimize their telemarketing strategies for term deposit subscriptions. By analyzing **client demographics, financial status, and previous marketing interactions**, we seek to identify key factors influencing customer decisions.
