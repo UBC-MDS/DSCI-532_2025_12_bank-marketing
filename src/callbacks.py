@@ -75,11 +75,21 @@ def create_education_plot(data):
 
 def return_empty(balance_plot, contact_plot, loan_plot, education_plot):
     subscribed_summary = [
-                html.P(f"Yes: {0}", style={'margin': '0px'}),
-                html.P(f"No: {0}", style={'margin': '0px'})
-            ]
+        html.P("Yes: 0", style={
+            'margin': '0px',
+            'color': '#60ac5a',
+            'fontSize': '1.2rem',
+            'fontWeight': 'bold'
+        }),
+        html.P("No: 0", style={
+            'margin': '0px',
+            'color': '#d16f6f',
+            'fontSize': '1.2rem',
+            'fontWeight': 'bold'
+        })
+    ]
     return (
-        0,
+        "0%",
         0,
         0,
         0,
@@ -105,8 +115,6 @@ def return_empty(balance_plot, contact_plot, loan_plot, education_plot):
      Input("marital_filter", "value"),
      Input("job_filter", "value")],
 )
-
-
 def update_cards(selected_years, selected_age, selected_marital, selected_job):
     min_age, max_age = selected_age
 
@@ -134,12 +142,22 @@ def update_cards(selected_years, selected_age, selected_marital, selected_job):
     no_count = len(filtered_df) - yes_count
 
     subscribed_summary = [
-        html.P(f"Yes: {yes_count}", style={'margin': '0px'}),
-        html.P(f"No: {no_count}", style={'margin': '0px'})
+        html.P(f"Yes: {yes_count}", style={
+            'margin': '0px',
+            'color': '#60ac5a',
+            'fontSize': '1.2rem',
+            'fontWeight': 'bold'
+        }),
+        html.P(f"No: {no_count}", style={
+            'margin': '0px',
+            'color': '#d16f6f',
+            'fontSize': '1.2rem',
+            'fontWeight': 'bold'
+        })
     ]
 
     return (
-        f"{prop_subscribed:.2f}",
+        f"{prop_subscribed:.1%}",
         f"{avg_contacts_campaign:.2f}",
         f"{avg_contacts_before:.2f}",
         f"{avg_last_contact:.1f}",

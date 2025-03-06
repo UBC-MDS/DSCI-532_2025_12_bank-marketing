@@ -131,29 +131,30 @@ dash_app.layout = html.Div([
             'justifyContent': 'space-between',  
             'boxSizing': 'border-box',  
             'height': '16%',
+            'margin': '0 0 20px 0'
         }),
 
         html.Div([
             html.Div([
                 html.Div("Proportion of Subscribed Users by Education Level", style={'height': '15%', 'padding': '5px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '20px', 'fontWeight': 'bold'}),
                 html.Div([education_plot], style={'height': '82%'})
-            ], style={'width': '45%', 'margin': '0.5%', 'flex-grow': 1}),
+            ], style={'width': '48%', 'margin': '0 1% 1% 0'}),
 
             html.Div([
                 html.Div("Balance Distribution by Subscription Status", style={'height': '15%', 'padding': '5px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '20px', 'fontWeight': 'bold'}),
                 html.Div([balance_plot], style={'height': '82%'})
-            ], style={'width': '45%', 'margin': '0.5%', 'flex-grow': 1}),
+            ], style={'width': '48%', 'margin': '0 0 1% 1%'}),
 
             html.Div([
                 html.Div("Campaign Contact and Subscription Status", style={'height': '15%', 'padding': '5px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '20px', 'fontWeight': 'bold'}),
                 html.Div([contact_plot], style={'height': '82%'})
-            ], style={'width': '45%', 'margin': '0.5%', 'flex-grow': 1}),
+            ], style={'width': '48%', 'margin': '0 1% 1% 0'}),
 
             html.Div([
                 html.Div("Distribution of Personal Loan by Subscription Status", style={'height': '15%', 'padding': '5px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '20px', 'fontWeight': 'bold'}),
                 html.Div([loan_plot], style={'height': '82%'})
-            ], style={'width': '45%', 'margin': '0.5%', 'flex-grow': 1})
-        ], style={'display': 'flex', 'flexWrap': 'wrap'})
+            ], style={'width': '48%', 'margin': '0 0 1% 1%'})
+        ], style={'display': 'flex', 'flexWrap': 'wrap', 'justifyContent': 'flex-start'})
     ], style={'width': '80%', 'backgroundColor': '#d3d3d3', 'padding': '20px', 'height': '100vh', 'position': 'fixed', 'right': 0, 'top': 0})
 ], style={'display': 'flex'})
 
