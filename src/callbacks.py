@@ -7,15 +7,15 @@ alt.data_transformers.enable('default', max_rows=50000)
 df = pd.read_csv("data/processed/prep_bank_marketing.csv")
 
 plot_width = 380
-plot_height = 190
+plot_height = 180
 
 def create_balance_plot(data):
     chart = alt.Chart(data, width='container').transform_density(
         'balance', as_=['balance', 'density'], groupby=['y']
     ).mark_area(opacity=0.75).encode(
         x=alt.X('balance:Q', title='Balance', axis=alt.Axis(titleFontSize=16)),
-        y=alt.Y('density:Q', title='Density', axis=alt.Axis(titleFontSize=16)),
-        color=alt.Color('y:N', scale=alt.Scale(domain=['yes', 'no'], range=['#60ac5a', '#d16f6f']), title='Subscribed?')
+        y=alt.Y('density:Q', title='Density', axis=alt.Axis(titleFontSize=16)).stack(False),
+        color=alt.Color('y:N', scale=alt.Scale(domain=['yes', 'no'], range=['#60ac5a', '#d16f6f']), title='Subscribed?', legend=None)
     ).properties(
         width=plot_width,  
         height=plot_height
@@ -27,8 +27,8 @@ def create_contact_plot(data):
     chart = alt.Chart(data).mark_square().encode(
          x=alt.X('campaign:Q', title='Number of Contacts During this Campaign', axis=alt.Axis(titleFontSize=16)),
          y=alt.Y('y:N', title='Subscribed?', axis=alt.Axis(titleFontSize=16)),
-         color=alt.Color('y:N', scale=alt.Scale(domain=['yes', 'no'], range=['#60ac5a', '#d16f6f']), title='Subscribed?'),
-         size='count()',
+         color=alt.Color('y:N', scale=alt.Scale(domain=['yes', 'no'], range=['#60ac5a', '#d16f6f']), title='Subscribed?', legend=None),
+         size=alt.Size('count()', legend=alt.Legend(title="Count of Records", orient="right")),
          tooltip=['campaign:Q', 'y:N', 'count():Q']
     ).properties(
         width=plot_width,
@@ -41,7 +41,7 @@ def create_loan_plot(data):
     chart = alt.Chart(data).mark_bar(size=40).encode(
         alt.X('loan:N', title='Has Personal Loan?', axis=alt.Axis(labelAngle=360, titleFontSize=16)),
         alt.Y('count()', title='Counts', axis=alt.Axis(titleFontSize=16)),
-        alt.Color('y:N', scale=alt.Scale(domain=['yes', 'no'], range=['#60ac5a', '#d16f6f']), title='Subscribed?'),
+        alt.Color('y:N', scale=alt.Scale(domain=['yes', 'no'], range=['#60ac5a', '#d16f6f']), title='Subscribed?', legend=None),
         alt.XOffset('y:N'),
         alt.Tooltip(['count():Q'])
     ).properties(
@@ -64,7 +64,7 @@ def create_education_plot(data):
             scale=alt.Scale(domain=['yes', 'no'], range=['#60ac5a', '#d16f6f']),
             title='Subscribed?', 
             sort=['yes', 'no'], 
-            legend=alt.Legend(orient='right')),
+            legend=None),
         alt.Tooltip(['proportion:Q'])
         ).properties(
             width=plot_width,  
