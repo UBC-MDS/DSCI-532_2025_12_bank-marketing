@@ -96,7 +96,6 @@ cards = html.Div([
             "Average Last Contact",
             html.Br(),
             "Duration (Seconds)"
-            "(Seconds)"
         ], "avg_last_contact")),
     ], style={'width': '48%', 'margin': '0 1% 0 0', 'display': 'flex', 'justifyContent': 'space-between'}),
     
