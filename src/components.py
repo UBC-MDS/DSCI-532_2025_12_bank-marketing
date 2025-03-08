@@ -95,7 +95,7 @@ cards = html.Div([
         dbc.Col(create_stat_card([
             "Average Last Contact",
             html.Br(),
-            "Duration",
+            "Duration (Seconds)"
             html.Br(),
             "(Seconds)"
         ], "avg_last_contact")),
