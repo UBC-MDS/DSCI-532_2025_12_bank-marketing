@@ -23,13 +23,13 @@ def create_stat_card(title, value_id, is_percentage=False, is_summary=False):
                     html.P("Yes: 0", style={
                         'margin': '0px',
                         'color': '#60ac5a',
-                        'fontSize': '1.2rem',
+                        'fontSize': '1.8rem',
                         'fontWeight': 'bold'
                     }),
                     html.P("No: 0", style={
                         'margin': '0px',
                         'color': '#d16f6f',
-                        'fontSize': '1.2rem',
+                        'fontSize': '1.8rem',
                         'fontWeight': 'bold'
                     })
                 ])

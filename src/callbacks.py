@@ -78,13 +78,13 @@ def return_empty(balance_plot, contact_plot, loan_plot, education_plot):
         html.P("Yes: 0", style={
             'margin': '0px',
             'color': '#60ac5a',
-            'fontSize': '1.2rem',
+            'fontSize': '1.8rem',
             'fontWeight': 'bold'
         }),
         html.P("No: 0", style={
             'margin': '0px',
             'color': '#d16f6f',
-            'fontSize': '1.2rem',
+            'fontSize': '1.8rem',
             'fontWeight': 'bold'
         })
     ]
@@ -145,13 +145,13 @@ def update_cards(selected_years, selected_age, selected_marital, selected_job):
         html.P(f"Yes: {yes_count}", style={
             'margin': '0px',
             'color': '#60ac5a',
-            'fontSize': '1.2rem',
+            'fontSize': '1.8rem',
             'fontWeight': 'bold'
         }),
         html.P(f"No: {no_count}", style={
             'margin': '0px',
             'color': '#d16f6f',
-            'fontSize': '1.2rem',
+            'fontSize': '1.8rem',
             'fontWeight': 'bold'
         })
     ]
