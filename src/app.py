@@ -127,7 +127,7 @@ dash_app.layout = html.Div([
                 ], style={'backgroundColor': 'white', 'padding': '15px', 'borderRadius': '10px', 'boxShadow': '0 4px 8px rgba(0, 0, 0, 0.1)', 'marginTop': '20px'}),
             ])
         ])
-    ], style={'width': '20%', 'backgroundColor': '#232242', 'padding': '20px', 'height': '100vh', 'overflow-y': 'auto'}),
+    ], style={'width': '20%', 'backgroundColor': '#232242', 'padding': '20px', 'height': '105vh'}),
 
 
     html.Div([
@@ -144,7 +144,7 @@ dash_app.layout = html.Div([
 
         html.Div([
             html.Div([
-                html.Div("Proportion of Subscribed Users by Education Level", style={'height': '15%', 'padding': '5px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '20px', 'fontWeight': 'bold'}),
+                html.Div("Percentage of Subscribed Users by Education Level", style={'height': '15%', 'padding': '5px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '20px', 'fontWeight': 'bold'}),
                 html.Div([education_plot], style={'height': '82%'})
             ], style={'width': '48%', 'margin': '0 1% 1% 0'}),
 

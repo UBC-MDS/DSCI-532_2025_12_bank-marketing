@@ -55,17 +55,18 @@ def create_education_plot(data):
     data_aggregated = data.groupby(['education', 'y']).size().reset_index(name='count')
     data_aggregated['total'] = data_aggregated.groupby('education')['count'].transform('sum')
     data_aggregated['proportion'] = data_aggregated['count'] / data_aggregated['total']
+    data_aggregated['percentage'] = data_aggregated['proportion'] * 100  
     
     chart = alt.Chart(data_aggregated).mark_bar().encode(
         alt.X('education:N', title='Education', axis=alt.Axis(labelAngle=360, titleFontSize=16)),  
-        alt.Y('proportion:Q', title='Proportion', stack='zero', axis=alt.Axis(titleFontSize=16)),
+        alt.Y('percentage:Q', title='Percentage', stack='zero', axis=alt.Axis(titleFontSize=16)),
         alt.Color(
             'y:N',
             scale=alt.Scale(domain=['yes', 'no'], range=['#60ac5a', '#d16f6f']),
             title='Subscribed?', 
             sort=['yes', 'no'], 
             legend=None),
-        alt.Tooltip(['proportion:Q'])
+        alt.Tooltip(['percentage:Q'])
         ).properties(
             width=plot_width,  
             height=plot_height
@@ -78,13 +79,13 @@ def return_empty(balance_plot, contact_plot, loan_plot, education_plot):
         html.P("Yes: 0", style={
             'margin': '0px',
             'color': '#60ac5a',
-            'fontSize': '1.8rem',
+            'fontSize': '1.6rem',
             'fontWeight': 'bold'
         }),
         html.P("No: 0", style={
             'margin': '0px',
             'color': '#d16f6f',
-            'fontSize': '1.8rem',
+            'fontSize': '1.6rem',
             'fontWeight': 'bold'
         })
     ]
@@ -145,13 +146,13 @@ def update_cards(selected_years, selected_age, selected_marital, selected_job):
         html.P(f"Yes: {yes_count}", style={
             'margin': '0px',
             'color': '#60ac5a',
-            'fontSize': '1.8rem',
+            'fontSize': '1.6rem',
             'fontWeight': 'bold'
         }),
         html.P(f"No: {no_count}", style={
             'margin': '0px',
             'color': '#d16f6f',
-            'fontSize': '1.8rem',
+            'fontSize': '1.6rem',
             'fontWeight': 'bold'
         })
     ]
