@@ -16,7 +16,7 @@ Since Milestone 2, we have implemented the feedback made by our professor, Danie
     -   Added colors in the upper cards for better visualization 
     -   Removed parenthesis from *Average Contacts*
 
-------------------------------------------------------------------------
+
 
 ## **Deviations from Proposal**
 
@@ -28,17 +28,7 @@ We stayed close to our original proposal; however, we made one key change:
 
     -   The number of contacts is a **discrete variable**, and a density plot assumes continuity, which may misrepresent the data.
 
-    -   A strip plot allows us to **visualize individual data points and their frequency** more explicitly.
 
--   **Challenges with the strip plot:**
-
-    -   Due to overlapping points and the dense distribution at lower contact values, interpretation may be difficult at a glance.
-
--   **Future considerations for Milestone 4:**
-
-    -   We may explore alternative visualizations to improve readability while preserving the discreteness of the number of contacts (See **Dashboard Limitations & Future Improvements** for more details)
-
-------------------------------------------------------------------------
 
 ## **What Dashboard Does Well**
 
@@ -67,22 +57,20 @@ We stayed close to our original proposal; however, we made one key change:
 
 -   The *Subscribed* card effectively captures the goal of the dashboard (subscription status) with a color-coded breakdown (green for yes, red for no)
 
-    ------------------------------------------------------------------------
 
-    ## **Dashboard Limitations & Future Improvements**
+## **Dashboard Limitations & Future Improvements**
 
-    **Visual Improvements:** Interpretability of the Strip Plot
+**Visual Improvements:** Interpretability of the Strip Plot
 
--   While it correctly shows discrete contact counts, overlapping points make it harder to interpret patterns.
+-   While it correctly shows discrete contact counts, the distribution is right-skewed and it makes the patterns for points in the right harder to interpret.
 
--   Alternative representations to improve readability could be:
-
-    -   **Violin plot** – Shows distribution while maintaining the distinction between discrete values.
-
-    -   **Binned scatterplot** – Reduces clutter and provides a clearer view of data concentration.
-
-    **Usability Improvements:** No Filter Reset Button
+**Usability Improvements:** No Filter Reset Button
 
 -   Currently, users have to manually reset filters to return to the default selection. This can be inconvenient, especially when multiple filters are adjusted.
 
 -   A filter reset button would enhance usability, allowing users to quickly revert to default selections and efficiently explore different filter combinations.
+
+
+## Challenging
+
+Our dashboard seems to be well optimized and we didn't want to change something significantly. But as a group we were discussing how to make the Info of the dashboard better. Daniel suggested several options that could potentially work, but the final decision was inspired from [Group 3](https://dsci-532-2025-3-quantatrack.onrender.com/) usage of tabs. We found it efficient to use a different tab for a section that is partially or completely independent of the current view. We decided to implement an INFO tab alongside the FILTERS tab. This allows users to switch between viewing dashboard information and adjusting filters without cluttering the main interface.
