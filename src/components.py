@@ -15,21 +15,21 @@ def create_stat_card(title, value_id, is_percentage=False, is_summary=False):
             dbc.CardBody([
                 html.H6(title, className="card-title", style={
                     'textAlign': 'center',
-                    'fontSize': '1.1rem',
+                    'fontSize': '1.2rem',
                     'fontWeight': 'bold',
-                    'marginBottom': '15px'
+                    'marginBottom': '5px'
                 }),
                 html.Div(id=value_id, children=[
                     html.P("Yes: 0", style={
                         'margin': '0px',
                         'color': '#60ac5a',
-                        'fontSize': '1.8rem',
+                        'fontSize': '1.6rem',
                         'fontWeight': 'bold'
                     }),
                     html.P("No: 0", style={
                         'margin': '0px',
                         'color': '#d16f6f',
-                        'fontSize': '1.8rem',
+                        'fontSize': '1.6rem',
                         'fontWeight': 'bold'
                     })
                 ])
@@ -39,14 +39,14 @@ def create_stat_card(title, value_id, is_percentage=False, is_summary=False):
                 'textAlign': 'center'
             }),
             className="mb-3 p-3 shadow-sm",
-            style={'width': '100%', 'height': '100%', 'textAlign': 'center'}
+            style={'width': '14vw', 'height': '105%', 'textAlign': 'center'}
         )
     else:
         return dbc.Card(
             dbc.CardBody([
                 html.H6(title, className="card-title", style={
                     'textAlign': 'center',
-                    'fontSize': '1.1rem',
+                    'fontSize': '1.2rem',
                     'fontWeight': 'bold',
                     'marginBottom': '15px'
                 }),
@@ -54,7 +54,7 @@ def create_stat_card(title, value_id, is_percentage=False, is_summary=False):
                        style={
                            'textAlign': 'center',
                            'data-is-percentage': str(is_percentage).lower(),
-                           'fontSize': '1.8rem',
+                           'fontSize': '1.6rem',
                            'fontWeight': 'bold',
                            'color': '#60ac5a' if is_percentage else '#232242'  # Use green for percentage, dark blue for others
                        })
@@ -64,46 +64,42 @@ def create_stat_card(title, value_id, is_percentage=False, is_summary=False):
                 'textAlign': 'center'
             }),
             className="mb-3 p-3 shadow-sm",
-            style={'width': '100%', 'height': '100%', 'textAlign': 'center'}
+            style={'width': '14vw', 'height': '105%', 'textAlign': 'center'}
         )
 
 
 def create_plot_card(plot_id):
     return dbc.Container([
         html.Div(
-            dvc.Vega(id=plot_id, style={'width': '100%', 'height': '100%'}),
+            dvc.Vega(id=plot_id, style={'width': '50%', 'height': '100%', 'alignItems': 'center'}),
             style={'backgroundColor': 'white'}
         )
-    ], className="mb-6 shadow-sm p-3", fluid=True, style={'height': '100%', 'backgroundColor': 'white'})
+    ], className="mb-6 shadow-sm p-3", fluid=True, style={'height': '100%', 'backgroundColor': 'white', 'display': 'flex', 'justifyContent': 'center', 'alignItems': 'center'})
 
 
 cards = html.Div([
     # Left group - 3 cards
     html.Div([
         dbc.Col(create_stat_card([
-            html.Span("Average Contacts", style={'color': '#666666'}),
+            html.Span("Average Contacts", style={'color': '#333333'}),
             html.Br(),
-            html.Span("CURRENT", style={'color': '#232242', 'fontWeight': 'bold'}),
-            html.Span(" Campaign", style={'color': '#666666'})
+            html.Span("CURRENT", style={'color': '#323579', 'fontWeight': 'bold'}),
+            html.Span(" Campaign", style={'color': '#333333'})
         ], "avg_contacts_campaign")),
         dbc.Col(create_stat_card([
-            html.Span("Average Contacts", style={'color': '#666666'}),
+            html.Span("Average Contacts", style={'color': '#333333'}),
             html.Br(),
-            html.Span("PREVIOUS", style={'color': '#232242', 'fontWeight': 'bold'}),
-            html.Span(" Campaigns", style={'color': '#666666'})
+            html.Span("PREVIOUS", style={'color': '#323579', 'fontWeight': 'bold'}),
+            html.Span(" Campaigns", style={'color': '#333333'})
         ], "avg_contacts_before")),
         dbc.Col(create_stat_card([
-            "Average Last Contact",
-            html.Br(),
-            "Duration (Seconds)"
+            html.Span("Average Contact Duration In Seconds", style={'color': '#333333'})
         ], "avg_last_contact")),
-    ], style={'width': '48%', 'margin': '0 1% 0 0', 'display': 'flex', 'justifyContent': 'space-between'}),
-    
-    # Right group - 2 cards
-    html.Div([
-        dbc.Col(create_stat_card("Proportion Subscribed", "prop_subscribed", is_percentage=True)),
-        dbc.Col(create_stat_card("Subscribed?", "subscribed_summary", is_summary=True)),
-    ], style={'width': '48%', 'margin': '0 0 0 1%', 'display': 'flex', 'justifyContent': 'space-between'})
+        dbc.Col(create_stat_card(html.Span("Proportion Subscribed", style={'color': '#333333'}), 
+                                 "prop_subscribed", is_percentage=True)),
+        dbc.Col(create_stat_card(html.Span("Subscribed?", style={'color': '#333333'}), 
+                                 "subscribed_summary", is_summary=True)),
+    ], style={'width': '100%', 'display': 'flex', 'justifyContent': 'space-between'})
 ], style={'display': 'flex', 'width': '100%', 'height': '100%'})
 
 balance_plot = create_plot_card("balance_plot")
