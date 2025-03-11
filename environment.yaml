@@ -8,6 +8,12 @@ dependencies:
   - wheel=0.45.1
   - pip:
     - dash==2.18.2
+    - dash_bootstrap_components==1.5.0
+    - dash-vega-components==0.10.0
+    - altair==5.3.0
+    - plotly==5.19.0
+    - tabulate==0.9.0
+    - lxml==5.1.0
     - ipykernel==6.29.5
     - ipython==8.32.0
     - notebook==7.3.2

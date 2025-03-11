@@ -16,6 +16,41 @@ Please take a look at the **GIF below** for a quick demo of our dashboard!
 
 ![](img/bank_marketing.gif)
 
+## 💾 **Installation Instructions**
+
+**These steps will guide you through setting up and running the Student Academic Performance Dashboard.**
+
+1.  Clone the Repository to get a local copy of the project:
+
+    ```         
+    git clone https://github.com/UBC-MDS/DSCI-532_2025_12_bank-marketing.git
+    ```
+
+2.  In your Terminal, move to the root directory of the project:
+
+    ```         
+    cd path-to-root-directory-of-project
+    ```
+
+3.  Create the Conda environment from the environment.yml file:
+
+    ```         
+    conda env create -f environment.yaml
+    ```
+
+    and activate it:
+
+    ```         
+    conda activate dsci532
+    ```
+
+4.  In Terminal, run the app:
+
+    ```         
+    python src/app.py
+    ```
+
+5.  After running the app, a URL (something like [`http://127.0.0.1:5000/`](http://127.0.0.1:5000/)) will be displayed in your terminal. Copy and paste the URL into your web browser to access the dashboard!
 
 ## 🛠️ Support
 
