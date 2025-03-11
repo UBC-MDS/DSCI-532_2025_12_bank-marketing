@@ -1,3 +1,5 @@
+from dash import Input, Output, State, ctx, dcc
+import io
 import pandas as pd
 from dash import Input, Output, html
 from src.app import dash_app
@@ -168,3 +170,32 @@ def update_cards(selected_years, selected_age, selected_marital, selected_job):
         loan_plot,
         education_plot
     )
+@dash_app.callback(
+    Output("download_data", "data"),
+    Input("download_button", "n_clicks"),
+    State("year_filter", "value"),
+    State("age_filter", "value"),
+    State("marital_filter", "value"),
+    State("job_filter", "value"),
+    prevent_initial_call=True
+)
+def download_filtered_data(n_clicks, selected_years, selected_age, selected_marital, selected_job):
+    # Ensure there's a click trigger
+    if n_clicks is None:
+        return None
+    
+    # Reuse the same filtering logic as in `update_cards`
+    min_age, max_age = selected_age
+    filtered_df = df[
+        (df["year"].isin([int(y) for y in selected_years])) &
+        (df["age"] >= min_age) & (df["age"] <= max_age) &
+        (df["marital"].isin(selected_marital)) &
+        (df["job_prep"] == selected_job.lower() if selected_job else False)
+    ]
+
+    # Convert filtered_df to CSV
+    if filtered_df.empty:
+        return None
+
+    return dcc.send_data_frame(filtered_df.to_csv, filename="filtered_bank_marketing_data.csv", index=False)
+
