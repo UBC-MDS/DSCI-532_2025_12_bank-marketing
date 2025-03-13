@@ -16,6 +16,22 @@ dash_app.layout = html.Div([
             dcc.Tab(label='Filters', children=[
                 html.Div([
                     html.H4("Filters", style={'textAlign': 'center', 'fontSize': '30px', 'marginTop': '20px'}),
+                    html.Button(
+                        "Reset All Filters",
+                        id="reset-button",
+                        style={
+                            'width': '100%',
+                            'padding': '10px',
+                            'backgroundColor': '#e08136',
+                            'color': 'black',
+                            'border': 'none',
+                            'borderRadius': '5px',
+                            'fontSize': '18px',
+                            'marginBottom': '20px',
+                            'cursor': 'pointer',
+                            'fontWeight': 'bold'
+                        }
+                    ),
                     html.Div([
                         html.P("Year", style={'textAlign': 'center', 'fontSize': '25px', 'color': 'black', 'marginTop': '5px'}),
                         dcc.Checklist(
