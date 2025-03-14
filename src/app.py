@@ -149,8 +149,8 @@ dash_app.layout = html.Div([
             ], style={'width': '48%', 'margin': '0 1% 1% 0'}),
 
             html.Div([
-                html.Div("Balance Distribution by Subscription Status", style={'height': '15%', 'padding': '5px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '20px', 'fontWeight': 'bold'}),
-                html.Div([balance_plot], style={'height': '82%'})
+                html.Div("Distribution of Personal Loan by Subscription Status", style={'height': '15%', 'padding': '5px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '20px', 'fontWeight': 'bold'}),
+                html.Div([loan_plot], style={'height': '82%'})
             ], style={'width': '48%', 'margin': '0 0 1% 1%'}),
 
             html.Div([
@@ -159,9 +159,10 @@ dash_app.layout = html.Div([
             ], style={'width': '48%', 'margin': '0 1% 1% 0'}),
 
             html.Div([
-                html.Div("Distribution of Personal Loan by Subscription Status", style={'height': '15%', 'padding': '5px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '20px', 'fontWeight': 'bold'}),
-                html.Div([loan_plot], style={'height': '82%'})
+                html.Div("Balance Distribution by Subscription Status", style={'height': '15%', 'padding': '5px', 'backgroundColor': '#232242', 'textAlign': 'center', 'color': 'white', 'fontSize': '20px', 'fontWeight': 'bold'}),
+                html.Div([balance_plot], style={'height': '82%'})
             ], style={'width': '48%', 'margin': '0 0 1% 1%'})
+
         ], style={'display': 'flex', 'flexWrap': 'wrap', 'justifyContent': 'flex-start'})
     ], style={'width': '80%', 'backgroundColor': '#d3d3d3', 'padding': '20px', 'height': '100vh', 'position': 'fixed', 'right': 0, 'top': 0})
 ], style={'display': 'flex'})
