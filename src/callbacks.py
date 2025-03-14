@@ -1,20 +1,10 @@
 import pandas as pd
 from dash import Input, Output, html
 from src.app import dash_app
-from flask_caching import Cache
 import altair as alt
 alt.data_transformers.enable('default', max_rows=50000)
 
-#df = pd.read_csv("data/processed/prep_bank_marketing.csv")
 df = pd.read_parquet("data/processed/prep_bank_marketing.parquet")
-
-cache = Cache(
-    dash_app.server,
-    config={
-        'CACHE_TYPE': 'filesystem',
-        'CACHE_DIR': 'tmp'
-    }
-)
 
 plot_width = 380
 plot_height = 180
@@ -127,7 +117,6 @@ def return_empty(balance_plot, contact_plot, loan_plot, education_plot):
      Input("job_filter", "value")],
 )
 
-@cache.memoize()
 def update_cards(selected_years, selected_age, selected_marital, selected_job):
     min_age, max_age = selected_age
 
