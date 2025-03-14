@@ -78,7 +78,6 @@ def create_plot_card(plot_id):
 
 
 cards = html.Div([
-    # Left group - 3 cards
     html.Div([
         dbc.Col(create_stat_card([
             html.Span("Average Contacts", style={'color': '#333333'}),
