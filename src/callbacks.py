@@ -4,7 +4,8 @@ from src.app import dash_app
 import altair as alt
 alt.data_transformers.enable('default', max_rows=50000)
 
-df = pd.read_csv("data/processed/prep_bank_marketing.csv")
+#df = pd.read_csv("data/processed/prep_bank_marketing.csv")
+df = pd.read_parquet("data/processed/prep_bank_marketing.parquet")
 
 plot_width = 380
 plot_height = 180

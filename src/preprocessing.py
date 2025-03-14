@@ -52,6 +52,9 @@ def main():
     # Standardize job categories
     bank_prep['job_prep'] = bank_prep['job_prep'].str.lower().str.strip()
 
+    # Remove unnecessary columns
+    bank_prep.drop(columns=['job', 'default', 'housing', 'contact', 'day_of_week', 'month', 'pdays', 'poutcome'], inplace=True)
+
     directory = os.path.join(os.path.dirname(os.getcwd()), 'data/processed')
     
     # Ensure the directory exists
@@ -59,6 +62,10 @@ def main():
 
     file_path = os.path.join(directory, 'prep_bank_marketing.csv')
     bank_prep.to_csv(file_path, index=False)
+    print(f"Preprocessed Dataset saved to '{file_path}'")
+
+    file_path = os.path.join(directory, 'prep_bank_marketing.parquet')
+    bank_prep.to_parquet(file_path, index=False)
     print(f"Preprocessed Dataset saved to '{file_path}'")
 
 if __name__ == '__main__':
