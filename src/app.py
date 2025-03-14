@@ -121,7 +121,22 @@ dash_app.layout = html.Div([
                         )
                     ], style={'backgroundColor': 'white', 'padding': '15px', 'borderRadius': '10px',
                             'boxShadow': '0 4px 8px rgba(0, 0, 0, 0.1)', 'marginTop': '20px'}),
-                ], style={'color': 'white'})
+                ], style={'color': 'white'}),
+                html.Div([
+    html.Button("Download Filtered Data", id="download_button", 
+                style={
+                    'width': '100%',
+                    'padding': '10px',
+                    'backgroundColor': '#60ac5a',
+                    'color': 'white',
+                    'border': 'none',
+                    'borderRadius': '5px',
+                    'fontSize': '18px',
+                    'cursor': 'pointer',
+                    'marginTop': '20px'
+                }),
+    dcc.Download(id="download_data")
+], style={'textAlign': 'center'})
             ]),
             dcc.Tab(label='About', children=[
                 html.Div([
