@@ -1,6 +1,6 @@
 import dash_bootstrap_components as dbc
 import dash_vega_components as dvc
-from dash import html
+from dash import html, dcc
 
 def create_stat_card(title, value_id, is_percentage=False, is_summary=False):
     """
@@ -71,7 +71,7 @@ def create_stat_card(title, value_id, is_percentage=False, is_summary=False):
 def create_plot_card(plot_id):
     return dbc.Container([
         html.Div(
-            dvc.Vega(id=plot_id, style={'width': '50%', 'height': '100%', 'alignItems': 'center'}),
+            dcc.Loading(dvc.Vega(id=plot_id, opt={'actions': False}, style={'width': '50%', 'height': '100%', 'alignItems': 'center'}), type='circle'),
             style={'backgroundColor': 'white'}
         )
     ], className="mb-6 shadow-sm p-3", fluid=True, style={'height': '100%', 'backgroundColor': 'white', 'display': 'flex', 'justifyContent': 'center', 'alignItems': 'center'})
