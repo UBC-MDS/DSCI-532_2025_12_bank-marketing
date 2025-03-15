@@ -1,6 +1,8 @@
 from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
-dash_app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+dash_app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], assets_folder='../assets')
+dash_app._favicon = "favicon.ico"
+dash_app.title = "Bank Marketing Dashboard"
 server = dash_app.server
 import sys
 import os
