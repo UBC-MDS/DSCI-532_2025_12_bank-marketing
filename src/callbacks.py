@@ -169,12 +169,15 @@ DEFAULT_SUBSCRIBED_SUMMARY = [
 @lru_cache(maxsize=128)
 def get_card_updates(years_tuple, age_min, age_max, marital_tuple, job):
     """Cached version of card updates calculation"""
+    if job is not None:
+        job = job.lower()
+
     is_default = (
         set(years_tuple) == set(DEFAULT_YEARS) and
         age_min == DEFAULT_AGE_RANGE[0] and
         age_max == DEFAULT_AGE_RANGE[1] and
         set(marital_tuple) == set(DEFAULT_MARITAL) and
-        job.lower() == DEFAULT_JOB
+        job == DEFAULT_JOB
     )
 
     if is_default:
