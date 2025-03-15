@@ -7,7 +7,7 @@ import altair as alt
 from functools import lru_cache
 alt.data_transformers.enable('default', max_rows=50000)
 
-df = pd.read_csv("data/processed/prep_bank_marketing.csv")
+df = pd.read_parquet("data/processed/prep_bank_marketing.parquet")
 
 plot_width = 380
 plot_height = 190
@@ -246,6 +246,7 @@ def get_card_updates(years_tuple, age_min, age_max, marital_tuple, job):
      Input("marital_filter", "value"),
      Input("job_filter", "value")],
 )
+
 def update_cards(selected_years, selected_age, selected_marital, selected_job):
     """Main callback function that uses the cached get_card_updates"""
     min_age, max_age = selected_age
