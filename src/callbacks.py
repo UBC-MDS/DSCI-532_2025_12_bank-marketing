@@ -29,7 +29,7 @@ def create_balance_plot(data):
 
         x=alt.X('balance:Q', title='Balance (EUR)', axis=alt.Axis(titleFontSize=16)),
         y=alt.Y('density:Q', title='Density', axis=alt.Axis(titleFontSize=16)).stack(False),
-        color=alt.Color('y:N', scale=alt.Scale(domain=['yes', 'no'], range=['#60ac5a', '#d16f6f']), title='Subscribed', legend=None)
+        color=alt.Color('y:N', scale=alt.Scale(domain=['yes', 'no'], range=['#60ac5a', '#d16f6f']), title='Subscribed?')
     ).properties(
         width=plot_width,  
         height=plot_height
