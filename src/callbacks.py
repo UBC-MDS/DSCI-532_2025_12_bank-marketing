@@ -155,13 +155,13 @@ DEFAULT_SUBSCRIBED_SUMMARY = [
     html.P(f"Yes: {DEFAULT_YES_COUNT}", style={
         'margin': '0px',
         'color': '#60ac5a',
-        'fontSize': '1.2rem',
+        'fontSize': '1.6rem',
         'fontWeight': 'bold'
     }),
     html.P(f"No: {DEFAULT_NO_COUNT}", style={
         'margin': '0px',
         'color': '#d16f6f',
-        'fontSize': '1.2rem',
+        'fontSize': '1.6rem',
         'fontWeight': 'bold'
     })
 ]
@@ -211,13 +211,13 @@ def get_card_updates(years_tuple, age_min, age_max, marital_tuple, job):
         html.P(f"Yes: {stats['yes_count']}", style={
             'margin': '0px',
             'color': '#60ac5a',
-            'fontSize': '1.2rem',
+            'fontSize': '1.6rem',
             'fontWeight': 'bold'
         }),
         html.P(f"No: {stats['no_count']}", style={
             'margin': '0px',
             'color': '#d16f6f',
-            'fontSize': '1.2rem',
+            'fontSize': '1.6rem',
             'fontWeight': 'bold'
         })
     ]
