@@ -60,13 +60,13 @@ Overall, we have stayed very close to our original proposal. However, some devia
 -   Drill-Down Interaction: Allow users to click on visual elements to refine selections dynamically.
 -   Export Functionality: Generate CSVs of high-potential clients based on filtering criteria.
 
-------------------------------------------------------------------------
 
 ### Challenging Portion
 
 -   As mentioned above, we managed to develop almost everything we had in our sketch.
 -   If you now look at the sketch and the app, they are almost identical!
 -   We have in total 4 plots, 4 filters, 5 summary statistics cards. 
+
 
 
 ## **Final Thoughts**
