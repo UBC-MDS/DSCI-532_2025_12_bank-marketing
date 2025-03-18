@@ -1,7 +1,7 @@
 from dash import Input, Output, State, ctx, dcc
 import pandas as pd
 from dash import Input, Output, html, State
-from src.app import dash_app
+from app import dash_app
 import altair as alt
 from functools import lru_cache
 alt.data_transformers.enable('default', max_rows=50000)

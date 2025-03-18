@@ -10,6 +10,9 @@ ipython==8.32.0
 notebook==7.3.2
 numpy==2.2.3
 pandas==2.2.3
-pip==25.0
+pytest==8.3.5
+requests==2.32.3
 gunicorn==23.*
 ucimlrepo==0.0.7
+pyarrow==19.0.1
+fastparquet==2024.11.0
