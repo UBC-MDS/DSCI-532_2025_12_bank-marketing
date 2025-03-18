@@ -1,4 +1,4 @@
-name: dsci532_test2
+name: dsci532
 channels:
   - defaults
   - conda-forge
