@@ -52,6 +52,14 @@ Please take a look at the **GIF below** for a quick demo of our dashboard!
 
 5.  After running the app, a URL (something like [`http://127.0.0.1:5000/`](http://127.0.0.1:5000/)) will be displayed in your terminal. Copy and paste the URL into your web browser to access the dashboard!
 
+### **Tests**
+
+Run the following from the root directory to execute the tests:
+
+```
+pytest tests/
+```
+
 ## 🛠️ Support
 
 If you encounter a problem or have suggestions for improvement: - Open an **issue** in this [GitHub repository](https://github.com/UBC-MDS/DSCI-532_2025_12_bank-marketing/issues) We’ll review it **right away!**
