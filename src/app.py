@@ -1,6 +1,8 @@
 from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
-dash_app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+dash_app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], assets_folder='../assets')
+dash_app._favicon = "favicon.ico"
+dash_app.title = "Bank Marketing Dashboard"
 server = dash_app.server
 import sys
 import os
@@ -166,7 +168,7 @@ dash_app.layout = html.Div([
                 ], style={'backgroundColor': 'white', 'padding': '15px', 'borderRadius': '10px', 'boxShadow': '0 4px 8px rgba(0, 0, 0, 0.1)', 'marginTop': '20px'}),
             ])
         ])
-    ], style={'width': '20%', 'backgroundColor': '#232242', 'padding': '20px', 'height': '105vh'}),
+    ], style={'width': '20%', 'backgroundColor': '#232242', 'padding': '20px', 'height': '130vh'}),
 
 
     html.Div([
