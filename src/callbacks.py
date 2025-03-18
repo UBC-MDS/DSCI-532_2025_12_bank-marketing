@@ -29,7 +29,7 @@ def create_balance_plot(data):
 
         x=alt.X('balance:Q', title='Balance (EUR)', axis=alt.Axis(titleFontSize=16)),
         y=alt.Y('density:Q', title='Density', axis=alt.Axis(titleFontSize=16)).stack(False),
-        color=alt.Color('y:N', scale=alt.Scale(domain=['yes', 'no'], range=['#60ac5a', '#d16f6f']), title='Subscribed', legend=None)
+        color=alt.Color('y:N', scale=alt.Scale(domain=['yes', 'no'], range=['#60ac5a', '#d16f6f']), title='Subscribed?', legend=None)
     ).properties(
         width=plot_width,  
         height=plot_height
@@ -55,7 +55,7 @@ def create_loan_plot(data):
     chart = alt.Chart(data).mark_bar(size=40).encode(
         alt.X('loan:N', title='Has Personal Loan', axis=alt.Axis(labelAngle=360, titleFontSize=16)),
         alt.Y('count()', title='Counts', axis=alt.Axis(titleFontSize=16)),
-        alt.Color('y:N', scale=alt.Scale(domain=['yes', 'no'], range=['#60ac5a', '#d16f6f']), title='Subscribed?'),
+        alt.Color('y:N', scale=alt.Scale(domain=['yes', 'no'], range=['#60ac5a', '#d16f6f']), title='Subscribed?', legend=None),
         alt.XOffset('y:N'),
         alt.Tooltip(['count():Q'])
     ).properties(
@@ -78,7 +78,7 @@ def create_education_plot(data):
             scale=alt.Scale(domain=['yes', 'no'], range=['#60ac5a', '#d16f6f']),
             title='Subscribed?', 
             sort=['yes', 'no'], 
-            legend=alt.Legend(orient='right')),
+            legend=None),
         alt.Tooltip(['proportion:Q'])
         ).properties(
             width=plot_width,  
