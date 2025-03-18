@@ -1,6 +1,8 @@
 from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
-dash_app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+dash_app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], assets_folder='../assets')
+dash_app._favicon = "favicon.ico"
+dash_app.title = "Bank Marketing Dashboard"
 server = dash_app.server
 import sys
 import os
@@ -16,22 +18,45 @@ dash_app.layout = html.Div([
             dcc.Tab(label='Filters', children=[
                 html.Div([
                     html.H4("Filters", style={'textAlign': 'center', 'fontSize': '30px', 'marginTop': '20px'}),
-                    html.Button(
-                        "Reset All Filters",
-                        id="reset-button",
-                        style={
-                            'width': '100%',
-                            'padding': '10px',
-                            'backgroundColor': '#e08136',
-                            'color': 'black',
-                            'border': 'none',
-                            'borderRadius': '5px',
-                            'fontSize': '18px',
-                            'marginBottom': '20px',
-                            'cursor': 'pointer',
-                            'fontWeight': 'bold'
-                        }
-                    ),
+                    html.Div([
+                        html.Div([
+                            html.Button(
+                                "Reset All Filters",
+                                id="reset-button",
+                                style={
+                                    'width': '48%',
+                                    'padding': '10px',
+                                    'backgroundColor': '#e08136',
+                                    'color': 'black',
+                                    'border': 'none',
+                                    'borderRadius': '5px',
+                                    'fontSize': '18px',
+                                    'cursor': 'pointer',
+                                    'fontWeight': 'bold'
+                                }
+                            ),
+                            html.Button(
+                                "Export Data",
+                                id="download_button",
+                                style={
+                                    'width': '48%',
+                                    'padding': '10px',
+                                    'backgroundColor': '#60ac5a',
+                                    'color': 'white',
+                                    'border': 'none',
+                                    'borderRadius': '5px',
+                                    'fontSize': '18px',
+                                    'cursor': 'pointer',
+                                    'fontWeight': 'bold'
+                                }
+                            )
+                        ], style={
+                            'display': 'flex',
+                            'justifyContent': 'space-between',
+                            'marginBottom': '20px'
+                        }),
+                        dcc.Download(id="download_data")
+                    ]),
                     html.Div([
                         html.P("Year", style={'textAlign': 'center', 'fontSize': '25px', 'color': 'black', 'marginTop': '5px'}),
                         dcc.Checklist(
@@ -121,22 +146,7 @@ dash_app.layout = html.Div([
                         )
                     ], style={'backgroundColor': 'white', 'padding': '15px', 'borderRadius': '10px',
                             'boxShadow': '0 4px 8px rgba(0, 0, 0, 0.1)', 'marginTop': '20px'}),
-                ], style={'color': 'white'}),
-                html.Div([
-    html.Button("Download Filtered Data", id="download_button", 
-                style={
-                    'width': '100%',
-                    'padding': '10px',
-                    'backgroundColor': '#60ac5a',
-                    'color': 'white',
-                    'border': 'none',
-                    'borderRadius': '5px',
-                    'fontSize': '18px',
-                    'cursor': 'pointer',
-                    'marginTop': '20px'
-                }),
-    dcc.Download(id="download_data")
-], style={'textAlign': 'center'})
+                ], style={'color': 'white'})
             ]),
             dcc.Tab(label='About', children=[
                 html.Div([
@@ -158,7 +168,7 @@ dash_app.layout = html.Div([
                 ], style={'backgroundColor': 'white', 'padding': '15px', 'borderRadius': '10px', 'boxShadow': '0 4px 8px rgba(0, 0, 0, 0.1)', 'marginTop': '20px'}),
             ])
         ])
-    ], style={'width': '20%', 'backgroundColor': '#232242', 'padding': '20px', 'height': '105vh'}),
+    ], style={'width': '20%', 'backgroundColor': '#232242', 'padding': '20px', 'height': '130vh'}),
 
 
     html.Div([
