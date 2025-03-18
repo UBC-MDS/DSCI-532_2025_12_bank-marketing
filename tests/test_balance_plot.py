@@ -2,8 +2,8 @@ import sys
 import pandas as pd
 import pytest
 import os
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
-from ..src.callbacks import create_balance_plot
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from src.callbacks import create_balance_plot
 
 @pytest.fixture
 def sample_data():

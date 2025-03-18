@@ -1,7 +1,10 @@
 from dash import Input, Output, State, ctx, dcc
 import pandas as pd
 from dash import Input, Output, html, State
-from app import dash_app
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath("..")))
+from src.app import dash_app
 import altair as alt
 from functools import lru_cache
 alt.data_transformers.enable('default', max_rows=50000)
