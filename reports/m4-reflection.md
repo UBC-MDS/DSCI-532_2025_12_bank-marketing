@@ -36,6 +36,16 @@ There were no deviations from the best practices we learned in 531. The only plo
 
 ## Strengths and Limitations
 
-The main strength of our dashboard is that it's simple and intuitive. Filters on the right side, plots and cards on the left side. The main insights of the data are easy to grasp. 
+The main strength of our dashboard is that it's simple and intuitive. Filters on the left side, plots and cards on the right side. The main insights of the data are easy to grasp. 
 
 There is one major limitation we would like to address in the future. Our dashboard will not look good for tablets or phones. We would like to make the design more consistent for different devices and screen resolutions. 
+
+## Challenging
+
+The following was done for the challenging exercise:
+
+- Basic tests were written for the plotting functions.
+- Detailed docstrings were written for each function.
+- Detailed comments were written for all modules.
+
+
